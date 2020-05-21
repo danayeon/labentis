@@ -1,3 +1,59 @@
 @import 'reset';
 @import 'font-awesome-sprockets';
-@import 'font-awesome'
+@import 'font-awesome';
+@import 'projects';
+
+@mixin Flexbox($justify: normal, $align: normal, $direction: normal) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100vw;
+  padding: 0 calc(50vw - 500px);
+  padding-bottom: 20px;
+  background-color: white;
+
+  .header-content {
+    height: 50px;
+    width: 1000px;
+    padding: 0 20px;
+    border-bottom: 1px solid #707070;
+    @include Flexbox($justify: space-between, $align: flex-end)
+
+    &__logo {
+      font-size: 30px;
+      color: #000;
+    }
+
+    &__list {
+      @include Flexbox($justify: space-between);
+      height: 30px;
+      width: 200px;
+      margin-bottom: 10px;
+
+      .sign-up, .sign-in {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+main {
+  padding: 0 calc(50vw - 500px);
+  padding-top: 70px;
+}
