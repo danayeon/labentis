@@ -8,4 +8,15 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    %header
+      .header-content
+        =link_to '/' do
+          %h1.header-content__logo
+            labentis
+        %ul.header-content__list
+          %li.sign-up
+            Sign up
+          %li.sign-in
+            Sign in
+    %main
+      = yield

@@ -1,0 +1,39 @@
+.wrapper
+  .hot-projects
+    %h1.hot-projects__index
+      Hot Projects
+    .hot-projects__container
+      .slide-switch
+        %i.fas.fa-angle-left
+      .container__thumbnail
+      .slide-switch
+        %i.fas.fa-angle-right
+    .hot-projects__info
+      =link_to "#" do
+        %p.hot-projects__info__title
+          Pandemic
+      %p.hot-projects__info__date
+        2020/05/20
+      %p.hot-projects__info__creaters
+        hogehogehoge
+      %p.hot-projects__info__tags
+        %tags__ul
+          %tags__li
+            hogehoge
+          %tags__li
+            hogehoge
+  .projects-list
+    -@projects.each do |project|
+      .projects-list__a-project
+        .a-project__thumbnail
+          %iframe#player{frameborder: "0", height:"180", src: -project.url, type: "text/html", width: "320"}
+        .a-project__info
+          =link_to project_path(project.id) do
+            .a-project__info__title
+              =project.title
+          .a-project__info__date
+            =project.upload_at
+          .a-project__info__creaters
+            hoge
+          .a-project__info__tags
+            hoge

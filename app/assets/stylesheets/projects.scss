@@ -1,0 +1,115 @@
+@mixin Flexbox($justify: normal, $align: normal, $direction: normal) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+/* index */
+.hot-projects {
+
+  margin-bottom: 50px;
+
+  &__index{
+    margin-left: 100px;
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+
+  &__container{
+    @include Flexbox($justify: center)
+  }
+
+  .slide-switch {
+    height: 405px;
+    width: calc((100% - 720px) / 2);
+    padding: 187.5px 0;
+  }
+
+  .fa-angle-left {
+    font-size: 30px;
+    margin-right: 20px;
+    float: right;
+  }
+
+  .fa-angle-right {
+    font-size: 30px;
+    margin-left: 20px;
+    float: left;
+  }
+
+  .container__thumbnail {
+    height: 405px;
+    width: 720px;
+    border: 1px solid #333;
+  }
+
+  .hot-projects__info {
+    width: 720px;
+    padding: 0 10px;
+    margin: 0 auto;
+
+    &__title {
+      display: inline-block;
+      font-size: 30px;
+    }
+
+    &__date {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 15px;
+      float: right;
+    }
+
+    &__creaters {
+      font-size: 20px;
+    }
+
+    &__tags{
+    }
+  }
+}
+
+.projects-list {
+  padding: 0 140px;
+
+  &__a-project {
+    @include Flexbox()
+    margin-bottom: 40px;
+
+    .a-project__thumbnail {
+      margin-right: 50px;
+    }
+
+    .a-project__info__title {
+      font-size: 30px;
+    }
+
+    .a-project__info__date {
+      float: right;
+    }
+  }
+
+}
+
+/* show */
+.project__thumbnail {
+  margin-bottom: 30px;
+
+}
+
+.project__info {
+  margin-bottom: 10px;
+
+  &__title {
+    font-size: 30px;
+  }
+
+  &__creaters {
+    display: inline-block;
+  }
+
+  &__date {
+    float: right;
+  }
+}
