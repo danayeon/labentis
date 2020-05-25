@@ -3,7 +3,10 @@
     .project__info__title
       =@project.title
     .project__info__creaters
-      hoge
+      =@track_user.name
+      =@lyric_user.name
+      =@singer_user.name
+      =@video_user.name
     .project__info__date
       =@project.upload_at
   .project__thumbnail
