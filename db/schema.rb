@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_165224) do
+ActiveRecord::Schema.define(version: 2020_05_25_162021) do
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 2020_05_21_165224) do
     t.datetime "upload_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "track_user_id", null: false
+    t.bigint "lyric_user_id", null: false
+    t.bigint "singer_user_id", null: false
+    t.bigint "video_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lyric_user_id"], name: "index_teams_on_lyric_user_id"
+    t.index ["singer_user_id"], name: "index_teams_on_singer_user_id"
+    t.index ["track_user_id"], name: "index_teams_on_track_user_id"
+    t.index ["video_user_id"], name: "index_teams_on_video_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -41,4 +54,8 @@ ActiveRecord::Schema.define(version: 2020_05_21_165224) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "teams", "users", column: "lyric_user_id"
+  add_foreign_key "teams", "users", column: "singer_user_id"
+  add_foreign_key "teams", "users", column: "track_user_id"
+  add_foreign_key "teams", "users", column: "video_user_id"
 end

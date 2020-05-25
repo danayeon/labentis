@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: 'projects#index'
   resources :users, only: [:new]
   resources :projects, only: [:index, :show]
+  resources :teams
 end
