@@ -16,7 +16,7 @@
         %ul.header-content__list
           -if user_signed_in?
             %li.sign-up
-              =link_to 'user_path(current_user.id)' do
+              =link_to user_path(current_user) do
                 My page
             %li.sign-in
               =link_to '/users/sign_out', method: 'delete' do
