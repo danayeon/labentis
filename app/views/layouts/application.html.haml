@@ -15,6 +15,9 @@
             labentis
         %ul.header-content__list
           -if user_signed_in?
+            %li.new-project
+              =link_to  new_project_path do
+                New project
             %li.sign-up
               =link_to user_path(current_user) do
                 My page
