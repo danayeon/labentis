@@ -3,12 +3,16 @@
     .project__info__title
       =@project.title
     .project__info__creaters
+      Track:
       =link_to user_path(@track_user.id) do
         =@track_user.name
+      Lyric:
       =link_to user_path(@lyric_user.id) do
         =@lyric_user.name
+      Sing:
       =link_to user_path(@singer_user.id) do
         =@singer_user.name
+      Video:
       =link_to user_path(@video_user.id) do
         =@video_user.name
     .project__info__date
