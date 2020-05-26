@@ -3,10 +3,14 @@
     .project__info__title
       =@project.title
     .project__info__creaters
-      =@track_user.name
-      =@lyric_user.name
-      =@singer_user.name
-      =@video_user.name
+      =link_to user_path(@track_user.id) do
+        =@track_user.name
+      =link_to user_path(@lyric_user.id) do
+        =@lyric_user.name
+      =link_to user_path(@singer_user.id) do
+        =@singer_user.name
+      =link_to user_path(@video_user.id) do
+        =@video_user.name
     .project__info__date
       =@project.upload_at
   .project__thumbnail
