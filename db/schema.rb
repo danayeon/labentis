@@ -12,6 +12,26 @@
 
 ActiveRecord::Schema.define(version: 2020_05_26_055651) do
 
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.text "title", null: false
+    t.text "url", null: false
+    t.text "overview", null: false
+    t.integer "reported"
+    t.integer "alert"
+    t.datetime "upload_at", null: false
+    t.bigint "track_user_id", null: false
+    t.bigint "lyric_user_id", null: false
+    t.bigint "singer_user_id", null: false
+    t.bigint "video_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lyric_user_id"], name: "index_projects_on_lyric_user_id"
+    t.index ["singer_user_id"], name: "index_projects_on_singer_user_id"
+    t.index ["track_user_id"], name: "index_projects_on_track_user_id"
+    t.index ["video_user_id"], name: "index_projects_on_video_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.integer "type"
