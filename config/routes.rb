@@ -5,6 +5,5 @@ Rails.application.routes.draw do
   }
   root to: 'projects#index'
   resources :users, only: [:new, :show]
-  resources :projects, only: [:index, :show]
-  resources :teams
+  resources :projects, only: [:index, :show, :new]
 end
