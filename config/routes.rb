@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'projects#index'
-  resources :users, only: [:new]
+  resources :users, only: [:new, :show]
   resources :projects, only: [:index, :show]
   resources :teams
 end
