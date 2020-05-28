@@ -11,4 +11,8 @@ class ProjectsController < ApplicationController
     @singer_user = User.find(@project.singer_user_id)
     @video_user = User.find(@project.video_user_id)
   end
+
+  def new
+    @project = Project.new
+  end
 end
