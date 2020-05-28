@@ -13,25 +13,64 @@ Things you may want to cover:
 
 * Database creation
 # labentis DB設計
-## projectsテーブル
-|Column    |Type     |Option                   |
-|----------|---------|-------------------------|
-|team_id   |integer  |null: false, foreign_key |
-|product_id|integer  |null: false, foreign_key |
-|title     |string   |null: false              |
-|link      |string   |null: false, unipue: true|
-|overview  |text     |null: false              |
-|reported  |integer  |                         |
-|alert     |integer  |                         |
-|created_at|timestamp|null: false              |
-|update_at |timestamp|null: false              |
-|upload_at |datatime |null: false              |
+## Projectsテーブル
+|Column        |Type      |Option                   |
+|--------------|----------|-------------------------|
+|title         |string    |null: false              |
+|statement     |text      |null: false              |
+|track_user_id |references|foreign_key: true        |
+|lyric_user_id |references|foreign_key: true        |
+|singer_user_id|references|foreign_key: true        |
+|video_user_id |references|foreign_key: true        |
+|manage_usre_id|references|foreign_key: true        |
+|link          |string    |unipue: true             |
+|overview      |text      |                         |
+|upload_at     |datatime  |                         |
+|created_at    |timestamp |null: false              |
+
 ### Association
- - belongs_to :team
- - belongs_to :product
- - has_many   :users,         through: :users_projects
- - has_many   :users_projects
- -
+ - belongs_to :user
+ - has_many   :messages
+ - has_many   :files
+
+## Usersテーブル
+|Column  |Type  |Option                   |
+|--------|------|-------------------------|
+|name    |string|null: false              |
+|email   |string|null: false, unique: true|
+|password|string|null: false              |
+|image   |string|                         |
+
+### Association
+ - has_many   :projects
+ - has_many   :files
+ - has_many   :messages
+
+## Filesテーブル
+|Column    |Type      |Option                        |
+|----------|----------|------------------------------|
+|user_id   |references|null: false, foreign_key: true|
+|project_id|references|null: false, foreign_key: true|
+|file      |??        |null: false, foreign_key: true|
+|created_at|timestamp |null: false                   |
+|name      |string    |null: false                   |
+
+### Association
+ - belongs_to :user
+ - belongs_to :project
+
+## Messagesテーブル
+|Column    |Type      |Option                        |
+|----------|----------|------------------------------|
+|user_id   |references|null: false, foreign_key: true|
+|project_id|references|null: false, foreign_key: true|
+|Content   |text      |null: false                   |
+|created_at|timestamp |null: false                   |
+
+### Association
+ - belongs_to :user
+ - belongs_to :project
+
 * Database initialization
 
 * How to run the test suite
