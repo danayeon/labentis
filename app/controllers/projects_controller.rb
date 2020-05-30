@@ -6,10 +6,10 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(:user).find(params[:id])
-    @track_user = User.find(@project.track_user_id)
-    @lyric_user = User.find(@project.lyric_user_id)
-    @singer_user = User.find(@project.singer_user_id)
-    @video_user = User.find(@project.video_user_id)
+    @track_user = User.find(@project.track_user_id) if @project.track_user_id
+    @lyric_user = User.find(@project.lyric_user_id) if @project.lyric_user_id
+    @singer_user = User.find(@project.singer_user_id) if @project.singer_user_id
+    @video_user = User.find(@project.video_user_id) if @project.video_user_id
   end
 
   def new
