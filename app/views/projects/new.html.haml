@@ -1,18 +1,19 @@
 .wrapper
   %h1
     新規プロジェクト
-  =form_with model: @project do |form|
-    =form.label :title, 'Title'
-    =form.text_field :title
-    =form.label :statement, '募集文'
-    =form.text_area :statement
-    自分の役割
-    =form.label :track, 'Track Make'
-    =form.check_box :track
-    =form.label :lyric, 'Lyric Write'
-    =form.check_box :lyric
-    =form.label :sing, 'Sing'
-    =form.check_box :sing
-    =form.label :video, 'Video Create'
-    =form.check_box :video
-    =form.submit 'プロジェクト立ち上げ'
+  .form
+    =form_with model: @project do |form|
+      =form.label :title, 'Title'
+      =form.text_field :title
+      =form.label :statement, '募集文'
+      =form.text_area :statement
+      自分の役割
+      =form.label :track, 'Track Make'
+      =form.check_box :track
+      =form.label :lyric, 'Lyric Write'
+      =form.check_box :lyric
+      =form.label :sing, 'Sing'
+      =form.check_box :sing
+      =form.label :video, 'Video Create'
+      =form.check_box :video
+      =form.submit 'プロジェクト立ち上げ'
