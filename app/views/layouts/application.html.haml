@@ -17,19 +17,19 @@
           -if user_signed_in?
             %li.new-project
               =link_to  new_project_path do
-                New project
+                %i.fas.fa-music
             %li.sign-up
               =link_to user_path(current_user) do
-                My page
+                %i.fas.fa-user
             %li.sign-in
               =link_to '/users/sign_out', method: 'delete' do
-                Sign out
+                %i.fas.fa-sign-out-alt
           -else
             %li.sign-up
               =link_to '/users/sign_up', class:"post" do
-                Sign up
+                %i.fas.fa-user-plus
             %li.sign-in
               =link_to '/users/sign_in' do
-                Sign in
+                %i.fas.fa-sign-in-alt
     %main
       = yield

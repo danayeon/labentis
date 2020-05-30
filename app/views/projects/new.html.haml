@@ -3,6 +3,9 @@
     新規プロジェクト
   .form
     =form_with model: @project do |form|
+      プロジェクトマネージャー
+      .manage-user{'data-current_user': current_user.id}
+        =current_user.name
       =form.label :title, 'Title'
       =form.text_field :title
       =form.label :statement, '募集文'
@@ -16,4 +19,4 @@
       =form.check_box :sing
       =form.label :video, 'Video Create'
       =form.check_box :video
-      =form.submit 'プロジェクト立ち上げ'
+      =form.submit 'プロジェクト立ち上げ', class: 'button'
