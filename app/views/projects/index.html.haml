@@ -24,22 +24,31 @@
             hogehoge
   .projects-list
     -@projects.each do |project|
-      .projects-list__a-project
-        .a-project__thumbnail
-          %iframe#player{frameborder: "0", height:"180", src: -project.url, type: "text/html", width: "320"}
-        .a-project__info
-          =link_to project_path(project.id) do
-            .a-project__info__title
-              =project.title
-          .a-project__info__date
-            =project.upload_at
-          .a-project__info__creaters
-            =project.track_user_id
-          .a-project__info__creaters
-            =project.lyric_user_id
-          .a-project__info__creaters
-            =project.singer_user_id
-          .a-project__info__creaters
-            =project.video_user_id
-          .a-project__info__tags
-            hoge
+      -if project.link
+        .projects-list__a-project
+          .a-project__thumbnail
+            %iframe#player{frameborder: "0", height:"180", src: -project.link, type: "text/html", width: "320"}
+          .a-project__info
+            =link_to project_path(project.id) do
+              .a-project__info__title
+                =project.title
+            .a-project__info__date
+              =project.upload_at
+            .a-project__info__creaters
+              Track:
+              =link_to user_path(project.track_user_id) do
+                =User.find(project.track_user_id).name
+            .a-project__info__creaters
+              Lyric:
+              =link_to user_path(project.lyric_user_id) do
+                =User.find(project.lyric_user_id).name
+            .a-project__info__creaters
+              Song:
+              =link_to user_path(project.singer_user_id) do
+                =User.find(project.singer_user_id).name
+            .a-project__info__creaters
+              Video:
+              =link_to user_path(project.video_user_id) do
+                =User.find(project.video_user_id).name
+            .a-project__info__tags
+              hoge

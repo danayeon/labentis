@@ -1,0 +1,22 @@
+.wrapper
+  %h1
+    新規プロジェクト
+  .form
+    =form_with model: @project, local: true do |form|
+      プロジェクトマネージャー
+      .manage-user{'data-current_user': current_user.id}
+        =current_user.name
+      =form.label :title, 'Title'
+      =form.text_field :title
+      =form.label :statement, '募集文'
+      =form.text_area :statement
+      自分の役割
+      =form.label :track_user_id, 'Track Make'
+      =form.check_box :track_user_id
+      =form.label :lyric_user_id, 'Lyric Write'
+      =form.check_box :lyric_user_id
+      =form.label :singer_user_id, 'Sing'
+      =form.check_box :singer_user_id
+      =form.label :video_user_id, 'Video Create'
+      =form.check_box :video_user_id
+      =form.submit 'プロジェクト立ち上げ', class: 'button'

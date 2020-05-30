@@ -3,25 +3,44 @@
     .project__info__title
       =@project.title
     .project__info__creaters
+      Manager
+      -if @manage_user
+        =@manage_user.name
       Track:
-      =link_to user_path(@track_user.id) do
-        =@track_user.name
+      -if @track_user
+        =link_to user_path(@track_user.id) do
+          =@track_user.name
+      -else
+        募集中
       Lyric:
-      =link_to user_path(@lyric_user.id) do
-        =@lyric_user.name
+      -if @lyric_user
+        =link_to user_path(@lyric_user.id) do
+          =@lyric_user.name
+      -else
+        募集中
       Sing:
-      =link_to user_path(@singer_user.id) do
-        =@singer_user.name
+      -if @singer_user
+        =link_to user_path(@singer_user.id) do
+          =@singer_user.name
+      -else
+        募集中
       Video:
-      =link_to user_path(@video_user.id) do
-        =@video_user.name
+      -if @video_user
+        =link_to user_path(@video_user.id) do
+          =@video_user.name
+      -else
+        募集中
     .project__info__date
-      =@project.upload_at
-  .project__thumbnail
-    %center
-      %iframe#player{frameborder: "0", height:"558", src: -@project.url, type: "text/html", width: "992"}
-  %pre.project__overview
-    =@project.overview
-
-    .project__info__tags
-      hoge
+      -if @project.upload_at
+        =@project.upload_at
+      -else
+        =@project.created_at
+  -if @project.link
+    .project__thumbnail
+      %center
+        %iframe#player{frameborder: "0", height:"558", src: -@project.link, type: "text/html", width: "992"}
+    %pre.project__overview
+      =@project.overview
+  -else
+    %pre.project__statement
+      =@project.statement
