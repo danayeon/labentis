@@ -19,7 +19,7 @@
       =@project.upload_at
   .project__thumbnail
     %center
-      %iframe#player{frameborder: "0", height:"558", src: -@project.url, type: "text/html", width: "992"}
+      %iframe#player{frameborder: "0", height:"558", src: -@project.link, type: "text/html", width: "992"}
   %pre.project__overview
     =@project.overview
 
