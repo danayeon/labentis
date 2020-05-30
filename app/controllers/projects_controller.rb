@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(:user).find(params[:id])
+    @manage_user = User.find(@project.manage_user_id) if @project.manage_user_id
     @track_user = User.find(@project.track_user_id) if @project.track_user_id
     @lyric_user = User.find(@project.lyric_user_id) if @project.lyric_user_id
     @singer_user = User.find(@project.singer_user_id) if @project.singer_user_id
@@ -17,8 +18,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create!(project_params)
-    redirect_to project_path(@project)
+    @project = Project.create(project_params)
+    @project.update(manage_user_id: current_user.id)
+    redirect_to project_path(@project.id)
   end
 
   private
