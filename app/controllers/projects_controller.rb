@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
     @lyric_user = User.find(@project.lyric_user_id) if @project.lyric_user_id
     @singer_user = User.find(@project.singer_user_id) if @project.singer_user_id
     @video_user = User.find(@project.video_user_id) if @project.video_user_id
+
+    @matches = Match.where(project_id: params[:id])
   end
 
   def new

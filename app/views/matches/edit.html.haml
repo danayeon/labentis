@@ -1,0 +1,29 @@
+.wrapper
+  .project__info
+    .project__info__title
+      =@project.title
+    .project__info__creaters
+      Manager
+      -if @manage_user
+        =@manage_user.name
+    =@project.created_at
+    %pre.project__statement
+      =@project.statement
+    =form_with model: @match, local: true do |form|
+      -if @match.project_id == @project.id
+        =User.find(@match.user_id).name
+        -if @match.track == 1
+          =form.check_box :track
+          =form.label :track, 'Track Maker'
+        -if @match.lyric == 1
+          =form.check_box :lyric
+          =form.label :lyric, 'Lyric Writer'
+
+        -if @match.singer == 1
+          =form.check_box :singer
+          =form.label :singer, 'Singer'
+
+        -if @match.video == 1
+          =form.check_box :video
+          =form.label :video, 'Video Creater'
+        =form.submit
