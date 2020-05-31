@@ -44,3 +44,7 @@
   -else
     %pre.project__statement
       =@project.statement
+
+  -if @project.track_user_id.nil? or @project.lyric_user_id.nil? or @project.singer_user_id.nil? or @project.video_user_id.nil?
+    =link_to new_match_path(project_id: @project.id) do
+      マッチング申請
