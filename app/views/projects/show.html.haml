@@ -45,6 +45,11 @@
     %pre.project__statement
       =@project.statement
 
-  -if @project.track_user_id.nil? or @project.lyric_user_id.nil? or @project.singer_user_id.nil? or @project.video_user_id.nil?
+  -if @project.manage_user_id == current_user.id
+    -@matches.each do |match|
+      =link_to edit_match_path(match.id) do
+        =User.find(match.user_id).name
+
+  -elsif @project.track_user_id.nil? or @project.lyric_user_id.nil? or @project.singer_user_id.nil? or @project.video_user_id.nil?
     =link_to new_match_path(project_id: @project.id) do
       マッチング申請
