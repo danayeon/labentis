@@ -49,21 +49,20 @@ Things you may want to cover:
  - has_many   :matches
 
 ## Matchesテーブル
-|Column    |Type      |Option     |
-|----------|----------|-----------|
-|project_id|references|null: false|
-|user_id   |references|null: false|
-|track     |integer   |null: false|
-|lyric     |integer   |null: false|
-|singer    |integer   |null: false|
-|video     |integer   |null: false|
-|permission|integer   |           |
-|comment   |text      |           |
+|Column    |Type      |Option                        |
+|----------|----------|------------------------------|
+|project_id|references|null: false, foreign_key: true|
+|user_id   |references|null: false, foreign_key: true|
+|track     |integer   |                              |
+|lyric     |integer   |                              |
+|singer    |integer   |                              |
+|video     |integer   |                              |
+|permission|integr    |                              |
+|comment   |text      |                              |
 
 ### Association
- - belongs_to :user
  - belongs_to :project
-
+ - belongs_to :user
 
 ## Filesテーブル
 |Column    |Type      |Option                        |
