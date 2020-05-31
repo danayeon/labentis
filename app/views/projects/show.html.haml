@@ -44,3 +44,7 @@
   -else
     %pre.project__statement
       =@project.statement
+
+  -unless @project.track_user_id or @project.lyric_user_id or @project.singer_user_id or @project.video_user_id
+    =link_to "#" do
+      マッチング申請
