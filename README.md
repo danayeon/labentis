@@ -32,6 +32,7 @@ Things you may want to cover:
  - belongs_to :user
  - has_many   :messages
  - has_many   :files
+ - has_many   :matches
 
 ## Usersテーブル
 |Column  |Type  |Option                   |
@@ -45,6 +46,24 @@ Things you may want to cover:
  - has_many   :projects
  - has_many   :files
  - has_many   :messages
+ - has_many   :matches
+
+## Matchesテーブル
+|Column    |Type      |Option     |
+|----------|----------|-----------|
+|project_id|references|null: false|
+|user_id   |references|null: false|
+|track     |integer   |null: false|
+|lyric     |integer   |null: false|
+|singer    |integer   |null: false|
+|video     |integer   |null: false|
+|permission|integer   |           |
+|comment   |text      |           |
+
+### Association
+ - belongs_to :user
+ - belongs_to :project
+
 
 ## Filesテーブル
 |Column    |Type      |Option                        |
