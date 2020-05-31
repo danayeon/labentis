@@ -45,6 +45,6 @@
     %pre.project__statement
       =@project.statement
 
-  -unless @project.track_user_id or @project.lyric_user_id or @project.singer_user_id or @project.video_user_id
-    =link_to "#" do
+  -if @project.track_user_id.nil? or @project.lyric_user_id.nil? or @project.singer_user_id.nil? or @project.video_user_id.nil?
+    =link_to new_match_path(project_id: @project.id) do
       マッチング申請
