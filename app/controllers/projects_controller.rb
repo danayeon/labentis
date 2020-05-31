@@ -19,6 +19,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @project.update(track_user_id: current_user.id) if params[:project][:track_user_id] == "1"
+    @project.update(lyric_user_id: current_user.id) if params[:project][:lyric_user_id] == "1"
+    @project.update(singer_user_id: current_user.id) if params[:project][:singer_user_id] == "1"
+    @project.update(video_user_id: current_user.id) if params[:project][:video_user_id] == "1"
     @project.update(manage_user_id: current_user.id)
     redirect_to project_path(@project.id)
   end
