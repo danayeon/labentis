@@ -1,0 +1,13 @@
+.message-view
+  -messages.each do |message|
+    .a-message
+      .a-message__user-name
+        =User.find(message.user_id).name
+      .a-message__sended-date
+        =message.created_at
+      .a-message__message-content
+        =message.content
+.message-form
+  =form_for [@messages] do |form|
+    =form.text_field :content
+    =form.submit '送信'
