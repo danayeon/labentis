@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show]
   resources :projects, only: [:index, :show, :new, :create] do
     resources :messages, only: [:index, :create]
+    resources :parts, only: [:index, :create]
   end
   resources :matches, only: [:new, :create, :edit, :update]
 end

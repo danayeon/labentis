@@ -35,19 +35,20 @@
     %pre.project__statement
       =@project.statement
 
-  .message-view
-    -@messages.each do |message|
-      .a-message
-        .a-message__user-name
-          =User.find(message.user_id).name
-        .a-message__sended-date
-          =message.created_at
-        .a-message__message-content
-          =message.content
-  .message-form
-    =form_for [@project, @message]  do |form|
-      =form.text_field :content
+  .part-view
+    -@parts.each do |part|
+      .a-part
+        .a-part__user-name
+          =User.find(part.user_id).name
+        .a-part__sended-date
+          =part.created_at
+        .a-part__file
+          =audio_tag part.file do
+            =part.name
+  .part-form
+    =form_for [@project, @part]  do |form|
+      =form.file_field :file
       =form.submit '送信'
 
-  =link_to project_parts_path(@project.id) do
-    ファイル
+  =link_to project_messages_path(@project.id) do
+    チャット
