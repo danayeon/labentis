@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_214648) do
+ActiveRecord::Schema.define(version: 2020_06_01_095602) do
 
   create_table "matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "project_id", null: false
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2020_05_31_214648) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_messages_on_project_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.string "file", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_parts_on_project_id"
+    t.index ["user_id"], name: "index_parts_on_user_id"
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -79,6 +90,8 @@ ActiveRecord::Schema.define(version: 2020_05_31_214648) do
   add_foreign_key "matches", "users"
   add_foreign_key "messages", "projects"
   add_foreign_key "messages", "users"
+  add_foreign_key "parts", "projects"
+  add_foreign_key "parts", "users"
   add_foreign_key "projects", "users", column: "lyric_user_id"
   add_foreign_key "projects", "users", column: "manage_user_id"
   add_foreign_key "projects", "users", column: "singer_user_id"
