@@ -2,5 +2,31 @@
   .user-name
     =@user.name
   -if @user.id == current_user.id
-    =link_to 'edit_user_path' do
-      Edit
+
+    -#制作中プロジェクト
+    .projects-list
+      -@projects.each do |project|
+        .a-project__info
+          =link_to project_messages_path(project.id) do
+            .a-project__info__title
+              =project.title
+          .a-project__info__date
+            =project.created_at
+          .a-project__info__creaters
+            Track:
+            =link_to user_path(project.track_user_id) do
+              =User.find(project.track_user_id).name
+          .a-project__info__creaters
+            Lyric:
+            =link_to user_path(project.lyric_user_id) do
+              =User.find(project.lyric_user_id).name
+          .a-project__info__creaters
+            Song:
+            =link_to user_path(project.singer_user_id) do
+              =User.find(project.singer_user_id).name
+          .a-project__info__creaters
+            Video:
+            =link_to user_path(project.video_user_id) do
+              =User.find(project.video_user_id).name
+      =link_to 'edit_user_path' do
+        Edit

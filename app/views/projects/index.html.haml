@@ -1,4 +1,5 @@
 .wrapper
+  -#Hot Projects
   .hot-projects
     %h1.hot-projects__index
       Hot Projects
@@ -22,6 +23,7 @@
             hogehoge
           %tags__li
             hogehoge
+  -#公開済み
   .projects-list
     -@projects.each do |project|
       -if project.link

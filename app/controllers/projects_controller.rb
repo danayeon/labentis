@@ -13,6 +13,8 @@ class ProjectsController < ApplicationController
     @video_user = User.find(@project.video_user_id) if @project.video_user_id
 
     @matches = Match.where(project_id: params[:id])
+
+    @messages = Message.where(project_id: @project.id)
   end
 
   def new

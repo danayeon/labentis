@@ -31,7 +31,7 @@ Things you may want to cover:
 ### Association
  - belongs_to :user
  - has_many   :messages
- - has_many   :files
+ - has_many   :parts
  - has_many   :matches
 
 ## Usersテーブル
@@ -44,7 +44,7 @@ Things you may want to cover:
 
 ### Association
  - has_many   :projects
- - has_many   :files
+ - has_many   :parts
  - has_many   :messages
  - has_many   :matches
 
@@ -64,7 +64,7 @@ Things you may want to cover:
  - belongs_to :project
  - belongs_to :user
 
-## Filesテーブル
+## Partsテーブル
 |Column    |Type      |Option                        |
 |----------|----------|------------------------------|
 |user_id   |references|null: false, foreign_key: true|
