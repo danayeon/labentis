@@ -1,0 +1,54 @@
+.wrapper
+  .project__info
+    .project__info__title
+      =@project.title
+    .project__info__creaters
+      Manager
+      -if @manage_user
+        =@manage_user.name
+      Track:
+      -if @track_user
+        =link_to user_path(@track_user.id) do
+          =@track_user.name
+      -else
+        募集中
+      Lyric:
+      -if @lyric_user
+        =link_to user_path(@lyric_user.id) do
+          =@lyric_user.name
+      -else
+        募集中
+      Sing:
+      -if @singer_user
+        =link_to user_path(@singer_user.id) do
+          =@singer_user.name
+      -else
+        募集中
+      Video:
+      -if @video_user
+        =link_to user_path(@video_user.id) do
+          =@video_user.name
+      -else
+        募集中
+    .project__info__date
+      =@project.created_at
+    %pre.project__statement
+      =@project.statement
+
+  .part-view
+    -@parts.each do |part|
+      .a-part
+        .a-part__user-name
+          =User.find(part.user_id).name
+        .a-part__sended-date
+          =part.created_at
+        .a-part__file
+          =audio_tag part.file do
+            =part.name
+  .part-form
+    =form_for [@project, @part]  do |form|
+      =form.file_field :file
+      =form.submit '送信'
+
+  =link_to project_messages_path(@project.id) do
+    チャット
